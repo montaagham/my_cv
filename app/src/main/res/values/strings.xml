@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ProVoiceAvatar</string>
+    <string name="voice_pitch">Voice Pitch</string>
+    <string name="hold_to_record">Hold to Record</string>
+    <string name="play">Play</string>
+    <string name="random_style">Random Style</string>
+</resources>
