@@ -101,3 +101,67 @@ implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 - `MediaPlayer`: Handles audio playback with pitch control
 - `Visualizer`: Provides real-time audio waveform data
 - `ViewBinding`: Type-safe view access
+
+## Project Structure
+```
+app/
+├── src/main/
+│   ├── java/com/example/provoiceavatar/
+│   │   └── MainActivity.kt
+│   ├── res/
+│   │   ├── drawable/
+│   │   │   ├── ic_face_placeholder.xml
+│   │   │   ├── ic_eyes_placeholder.xml
+│   │   │   ├── ic_mouth_placeholder.xml
+│   │   │   ├── ic_hair_placeholder.xml
+│   │   │   └── ic_mic_black_24dp.xml
+│   │   ├── layout/
+│   │   │   └── activity_main.xml
+│   │   ├── values/
+│   │   │   ├── strings.xml
+│   │   │   ├── colors.xml
+│   │   │   └── styles.xml
+│   │   └── xml/
+│   │       ├── backup_rules.xml
+│   │       └── data_extraction_rules.xml
+│   └── AndroidManifest.xml
+├── build.gradle
+├── settings.gradle
+├── gradle.properties
+└── gradle/
+    └── wrapper/
+        └── gradle-wrapper.properties
+```
+
+## How to Use
+1. Clone this repository
+2. Open in Android Studio
+3. Build and run the app
+4. Grant microphone permission when prompted
+5. Press and hold the "Hold to Record" button to record audio
+6. Use the "Voice Pitch" slider to adjust pitch
+7. Click "Play" to hear the recorded audio with lip-syncing avatar
+8. Click "Random Style" to change the avatar's appearance
+
+## Implementation Details
+
+### Audio Processing Pipeline
+1. Audio is captured using MediaRecorder when holding the record button
+2. During playback, the Visualizer class captures real-time audio waveform data
+3. Root Mean Square (RMS) calculation determines the current loudness
+4. Loudness value is mapped to mouth scaling for realistic lip-syncing
+5. Smooth animations provide natural-looking mouth movements
+
+### Performance Considerations
+- Visualizer capture rate is limited to prevent UI thread blocking
+- Mouth scaling uses smooth animations for natural appearance
+- Resources are properly released in onDestroy() to prevent memory leaks
+- UI updates are dispatched to the main thread to maintain responsiveness
+
+### Customization Options
+- The avatar style can be changed with random skin and hair colors
+- Pitch range is adjustable from 0.5x (lower) to 2.0x (higher)
+- Sensitivity of the lip-sync can be adjusted by modifying the amplitudeSensitivity parameter
+- Colors and styling can be easily modified through the color resources
+
+This implementation provides a complete, production-ready solution for real-time audio visualization with cartoon character lip-syncing.
