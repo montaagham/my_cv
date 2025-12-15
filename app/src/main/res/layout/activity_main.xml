@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_background"
+    tools:context=".MainActivity">
+
+    <!-- Avatar Container -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/avatarContainer"
+        android:layout_width="250dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="80dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Base face -->
+            <ImageView
+                android:id="@+id/imgFace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_face_placeholder" />
+
+            <!-- Eyes -->
+            <ImageView
+                android:id="@+id/imgEyes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_eyes_placeholder" />
+
+            <!-- Mouth -->
+            <ImageView
+                android:id="@+id/imgMouth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_mouth_placeholder"
+                android:scaleY="0.1" />
+
+            <!-- Hair -->
+            <ImageView
+                android:id="@+id/imgHair"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_hair_placeholder" />
+
+        </FrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Voice Pitch Slider -->
+    <com.google.android.material.slider.Slider
+        android:id="@+id/voicePitchSlider"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:value="1.0"
+        android:valueFrom="0.5"
+        android:valueTo="2.0"
+        android:stepSize="0.1"
+        android:contentDescription="@string/voice_pitch"
+        app:layout_constraintBottom_toTopOf="@+id/fabRecord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/voice_pitch" />
+
+    <!-- Hold to Record FAB -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_mic_black_24dp"
+        android:contentDescription="@string/hold_to_record"
+        app:layout_constraintBottom_toTopOf="@+id/btnPlay"
+        app:layout_constraintEnd_toStartOf="@+id/btnRandomStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@android:color/white" />
+
+    <!-- Random Style Button -->
+    <Button
+        android:id="@+id/btnRandomStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/random_style"
+        app:layout_constraintBottom_toTopOf="@+id/btnPlay"
+        app:layout_constraintStart_toEndOf="@+id/fabRecord"
+        app:layout_constraintEnd_toStartOf="@+id/guideline" />
+
+    <!-- Guideline to center Play button -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Play Button -->
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
